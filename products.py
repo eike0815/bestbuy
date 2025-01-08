@@ -23,10 +23,11 @@ class Product:
         self.quantity = quantity
         return quantity
 
-
-    def is_active(self) -> bool:
+    def is_active(self):
         if self.quantity <=0:
-            self.active = False
+            self.deactivate()
+        else:
+            self.activate()
         return self.active
 
 
@@ -36,7 +37,7 @@ class Product:
 
     def deactivate(self):
         self.active = False
-        return f"Product is {self.active}"
+        return self.active
 
     def show(self) -> str:
         return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}"
@@ -53,13 +54,17 @@ class Product:
             new_quantity = self.quantity - quantity
             self.set_quantity(new_quantity)
             return total_price, new_quantity
+
+bose = Product("Bose QuietComfort Earbuds", price=250, quantity=00)
+
+print(bose.is_active())
 """
 mac = Product("MacBook Air M2", price=1450, quantity=100)
 print(mac.buy(100))
 print(mac.is_active())
 
 bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
-print(bose.buy(50))
+print(bose.deactivate)
 
 bose.set_quantity(1000)
 print(bose.show())
