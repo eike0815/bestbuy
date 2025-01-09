@@ -18,10 +18,15 @@ class Store:
         print(f"Total of {total} items in store")
 
     def get_all_products(self):
-        all_products = filter(products.Product.is_active , self.product_list)
-        print('this are all products:')
-        for product in all_products:
-            print(f"Name: {product.name} , Price: {product.price}, Quantity: {product.quantity}")
+            all_products = []
+            for index in range(len(self.product_list)):
+                if self.product_list[index].is_active():
+                    all_products.append((self.product_list[index].name, self.product_list[index].price,
+                                         self.product_list[index].quantity))
+                    print(f" {index + 1}. {self.product_list[index].name},"
+                        f" Price: ${self.product_list[index].price}, "
+                        f"Quantity: {self.product_list[index].quantity}")
+
 
     def order(self, shopping_list):  #
         for index in range(len(shopping_list)):
@@ -81,10 +86,13 @@ thing= products.Product("thing", price=123, quantity= 20)
 """
 bose = products.Product("Bose QuietComfort Earbuds", price=250, quantity=0)
 mac = products.Product("MacBook Air M2", price=1450, quantity=100)
-thing= products.Product("thing", price=123, quantity= 0)
+thing= products.Product("thing", price=123, quantity= 100)
 store = Store([bose, mac, thing])
 pixel = products.Product("Google Pixel 7", price=500, quantity=100)
 store.add_product(pixel)
-store.get_all_products()
 shoing_list = [("MacBook Air M2", 20),("Google Pixel 7", 20)]
 store.order(shoing_list)
+
+bose = products.Product("Bose QuietComfort Earbuds",250, 500)
+print(products.Product.is_active)
+store.get_all_products()
