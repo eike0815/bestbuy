@@ -34,6 +34,7 @@
     "Python.store.executor": "Run",
     "Python.store_1.executor": "Run",
     "Python.test2.executor": "Run",
+    "Python.test_all.executor": "Run",
     "Python.tryanderror.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",

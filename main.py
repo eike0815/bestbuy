@@ -1,17 +1,18 @@
 import products
 import store
 
-
+#products, productlist and shop class are initialised.
 pro_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
                  products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
                  products.Product("Google Pixel 7", price=500, quantity=250)
                ]
-dingens =  products.Product("dingens", 23, 34)
 best_buy = (store.Store(pro_list))
-best_buy.add_product(dingens)
-best_buy.remove_product(dingens)
+
 
 def menu():
+    """
+    the function just prints the menu to the ui.
+    """
     print("     Store Menu")
     print("     ----------")
     print("1. List all products in store")
@@ -21,6 +22,11 @@ def menu():
 
 
 def ordering():
+    """
+    this function communicates with the store class and handles the order of the user.
+    as input there are just numbers, they refer than to products which are added to a shoppinglist
+    the function in the class than returns the total price.
+    """
     best_buy.get_all_products()
     shopping_list = []
     print("When you want to finish order, enter empty text.")
@@ -43,19 +49,25 @@ def ordering():
 
 
 def manual():
+    """
+    the manual is connected with functions in the Store class.
+    the user can choose between 4 options.
+    """
     while True:
         menu()
-        user_wish = int(input("Please choose a number: "))
-        if user_wish == 1:
-            best_buy.get_all_products()
-            print("\n")
-        if user_wish == 2:
-            best_buy.get_total_quantity()
-        if user_wish == 3:
-            ordering()
-        if user_wish == 4:
-            break
-
+        try:
+            user_wish = int(input("Please choose a number: "))
+            if user_wish == 1:
+                best_buy.get_all_products()
+                print("\n")
+            if user_wish == 2:
+                best_buy.get_total_quantity()
+            if user_wish == 3:
+                ordering()
+            if user_wish == 4:
+                break
+        except ValueError:
+            print("please enter a valid number between 1 and 4.")
 
 def main():
     manual()
@@ -63,3 +75,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

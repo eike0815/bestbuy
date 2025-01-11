@@ -39,15 +39,20 @@ class Product:
         return self.active
 
 
-    def show(self) -> str:
+    def show(self):
         return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}"
 
 
-    def buy(self, quantity) -> float:
+    def buy(self, quantity):
+        """
+        the function buy calculates the total price for the order of one product.
+        it monitors the quantity and returns an error-message,
+         if the quantity of order is higher than the stock in the shop.
+        """
         if quantity > self.quantity:
             print(f"there is not enough {self.name} in stock")
         else:
             total_price = self.price * quantity
             new_quantity = self.quantity - quantity
             self.set_quantity(new_quantity)
-            return total_price#f"total price: {total_price}, new quantity: {new_quantity}"
+            return total_price

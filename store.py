@@ -1,11 +1,13 @@
 import products
+
+
 class Store:
     def __init__(self, product_list):
         self.product_list = product_list
 
 
     def add_product(self, product):
-        self.product = product
+        products.product = product
         self.product_list.append(product)
 
 
@@ -21,6 +23,11 @@ class Store:
 
 
     def get_all_products(self):
+        """
+        this function checks the status of each product and
+        prints afterward the active products of the store.
+        to do so it communicates with the "quantitative" functions of the product class
+        """
         print("------")
         counter = 1
         for index in range(len(self.product_list)):
@@ -35,6 +42,10 @@ class Store:
 
     total = 0
     def order(self, shopping_list):
+        """
+        this function is handed a shopping list and by usinfg the buy function fromthe product class, it
+        adds all the prices for the products to one full total amount.
+        """
         for index in range(len(shopping_list)):
             for topic in range(len(self.product_list)):
                 if shopping_list[index][0].name == self.product_list[topic].name:
