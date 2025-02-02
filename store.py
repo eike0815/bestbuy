@@ -3,19 +3,36 @@ import products
 
 class Store:
     def __init__(self, product_list):
+        """
+        this function initiates the store
+        """
         self.product_list = product_list
 
 
     def add_product(self, product):
+        """
+        this function adds a product object to the store
+         by appending it to the store-list(product_list)
+        """
         products.product = product
         self.product_list.append(product)
 
 
     def remove_product(self, product):
+        """
+        this function removes a product.
+        it takes a product-list as an input and returns a product-list
+        without the chosen product.
+
+        """
         self.product_list.remove(product)
 
 
     def get_total_quantity(self):# -> int
+        """
+        this function counts the total quantity of all products in the store.
+        it takes a product list and returns an integer.
+        """
         total = 0
         for product in range(len(self.product_list)):
             total += self.product_list[product].quantity
@@ -43,7 +60,7 @@ class Store:
     total = 0
     def order(self, shopping_list):
         """
-        this function is handed a shopping list and by usinfg the buy function fromthe product class, it
+        this function is handed a shopping list and by using the buy function from the product class, it
         adds all the prices for the products to one full total amount.
         """
         for index in range(len(shopping_list)):

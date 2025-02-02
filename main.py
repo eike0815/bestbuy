@@ -1,7 +1,7 @@
 import products
 import store
 
-#products, productlist and shop class are initialised.
+#products, product-list and store class are initialised.
 pro_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
                  products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
                  products.Product("Google Pixel 7", price=500, quantity=250)
@@ -48,26 +48,25 @@ def ordering():
                     print("Error adding product!")
 
 
+
 def manual():
     """
     the manual is connected with functions in the Store class.
     the user can choose between 4 options.
     """
+    decision_list = [best_buy.get_all_products, best_buy.get_total_quantity, ordering]
     while True:
         menu()
         try:
             user_wish = int(input("Please choose a number: "))
-            if user_wish == 1:
-                best_buy.get_all_products()
-                print("\n")
-            if user_wish == 2:
-                best_buy.get_total_quantity()
-            if user_wish == 3:
-                ordering()
             if user_wish == 4:
                 break
+            else:
+                forefill_user_wish = decision_list[user_wish - 1]
+                forefill_user_wish()
         except ValueError:
             print("please enter a valid number between 1 and 4.")
+
 
 def main():
     manual()
